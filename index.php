@@ -20,14 +20,24 @@ class ConsumingApi {
     }
 
     public function getData () {
-        return $this->client->request('GET', $this->base_url, [
-            $this->headers, $this->auth
-        ])->getBody();
+        try {
+            return $this->client->request('GET', $this->base_url, [
+                $this->headers, $this->auth
+            ])->getBody();
+        } catch (Excepion $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        
     }
 
     public function saveOnFile ($filename) {
-        $fopen = fopen($filename, "a+");
-        fwrite($fopen, $this->getData());
+        $fopen = fopen($filename, "a");
+        if (fwrite($fopen, $this->getData()) === FALSE) {
+            echo "Não foi possível escrever no arquivo ($filename)";
+        } else {
+            echo "Arquivo gerado com sucesso!";
+        }
+        
         fclose($fopen);
     }
 }
