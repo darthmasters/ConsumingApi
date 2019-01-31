@@ -27,11 +27,10 @@ class ConsumingApi {
         } catch (Excepion $e) {
             echo "Error: " . $e->getMessage();
         }
-        
     }
 
     public function saveOnFile ($filename) {
-        $fopen = fopen($filename, "a");
+        $fopen = fopen($filename, "w");
         if (fwrite($fopen, $this->getData()) === FALSE) {
             echo "Não foi possível escrever no arquivo ($filename)";
         } else {
