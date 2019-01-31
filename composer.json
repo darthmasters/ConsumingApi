@@ -1,0 +1,12 @@
+{
+    "name": "rafael/crud",
+    "authors": [
+        {
+            "name": "Rafael Barbosa",
+            "email": "rafael.barbosa@vivitech.com.br"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    }
+}
